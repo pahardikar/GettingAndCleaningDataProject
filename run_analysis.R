@@ -15,12 +15,12 @@ activities <- read.table("./UCI HAR Dataset/activity_labels.txt")
 # step2 Merge the 'Features' files.
 x_data <- rbind(x_train, x_test)
 
-mean_and_std_features <- grepl("-(mean|std)\\(\\)", features[,2])
+mean_std <- grepl("-(mean|std)\\(\\)", features[,2])
 
 names(x_data) = features[,2]
 
 # Get the measurements on the mean and standard deviation for each measurement.
-x_data <- x_data[,mean_and_std_features]
+x_data <- x_data[,mean_std]
 
 # Merge the activity files.
 y_data <- rbind(y_train, y_test)
